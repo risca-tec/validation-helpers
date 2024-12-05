@@ -5,13 +5,13 @@
 ## Install
 
 ```
-jb install validation-helpers@master
+jb install https://github.com/risca-tec/validation-helpers@master
 ```
 
 ## Usage
 
 ```jsonnet
-local validation-helpers = import "validation-helpers"
+local validation-helpers = import "https://github.com/risca-tec/validation-helpers"
 ```
 
 
