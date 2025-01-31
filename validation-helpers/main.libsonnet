@@ -1,7 +1,7 @@
 // Validation utilities
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
-local types = import 'validation-helpers/types.libsonnet';
+local types = import 'types.libsonnet';
 
 {
   '#': d.pkg(
