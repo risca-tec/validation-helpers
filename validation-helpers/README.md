@@ -17,137 +17,81 @@ local validation-helpers = import "https://github.com/risca-tec/validation-helpe
 
 ## Index
 
-* [`obj type`](#obj-type)
-  * [`fn array(num, message)`](#fn-typearray)
-  * [`fn bool(o, message)`](#fn-typebool)
-  * [`fn nullOrArray(str, message)`](#fn-typenullorarray)
-  * [`fn nullOrNumber(str, message)`](#fn-typenullornumber)
-  * [`fn nullOrObject(str, message)`](#fn-typenullorobject)
-  * [`fn nullOrString(str, message)`](#fn-typenullorstring)
-  * [`fn number(num, message)`](#fn-typenumber)
-  * [`fn object(o, message)`](#fn-typeobject)
-  * [`fn string(str, message)`](#fn-typestring)
+* [`obj utilities`](#obj-utilities)
+  * [`fn typeValidation(o, types, message)`](#fn-utilitiestypevalidation)
 * [`obj value`](#obj-value)
+  * [`fn array(array, message)`](#fn-valuearray)
+  * [`fn arrayOfStrings(o, message)`](#fn-valuearrayofstrings)
+  * [`fn bool(o, message)`](#fn-valuebool)
   * [`fn literal(str, allowed, message)`](#fn-valueliteral)
+  * [`fn nil(o, message)`](#fn-valuenil)
+  * [`fn nilOrArray(o, message)`](#fn-valuenilorarray)
+  * [`fn nilOrNumber(o, message)`](#fn-valuenilornumber)
+  * [`fn nilOrObject(o, message)`](#fn-valuenilorobject)
+  * [`fn nilOrString(o, message)`](#fn-valuenilorstring)
+  * [`fn number(num, message)`](#fn-valuenumber)
+  * [`fn object(o, message)`](#fn-valueobject)
+  * [`fn string(str, message)`](#fn-valuestring)
 
 ## Fields
 
-### obj type
+### obj utilities
 
-Functions for enforcing values type.
+Collection of utilities.
 
-#### fn type.array
-
-```jsonnet
-type.array(num, message)
-```
-
-PARAMETERS:
-
-* **num** (`any`)
-* **message** (`string`)
-
-Return object if array, otherwise raise error.
-#### fn type.bool
+#### fn utilities.typeValidation
 
 ```jsonnet
-type.bool(o, message)
+utilities.typeValidation(o, types, message)
 ```
 
 PARAMETERS:
 
 * **o** (`any`)
+* **types** (`array`)
 * **message** (`string`)
 
-Return the value if boolean otherwise raise error.
-#### fn type.nullOrArray
-
-```jsonnet
-type.nullOrArray(str, message)
-```
-
-PARAMETERS:
-
-* **str** (`any`)
-* **message** (`string`)
-
-Return value if array type or null type, otherwise raise error.
-#### fn type.nullOrNumber
-
-```jsonnet
-type.nullOrNumber(str, message)
-```
-
-PARAMETERS:
-
-* **str** (`any`)
-* **message** (`string`)
-
-Return value if number type or null type, otherwise raise error.
-#### fn type.nullOrObject
-
-```jsonnet
-type.nullOrObject(str, message)
-```
-
-PARAMETERS:
-
-* **str** (`any`)
-* **message** (`string`)
-
-Return value if object type or null type, otherwise raise error.
-#### fn type.nullOrString
-
-```jsonnet
-type.nullOrString(str, message)
-```
-
-PARAMETERS:
-
-* **str** (`any`)
-* **message** (`string`)
-
-Enforce string type or null type, raise error if not string.
-#### fn type.number
-
-```jsonnet
-type.number(num, message)
-```
-
-PARAMETERS:
-
-* **num** (`any`)
-* **message** (`string`)
-
-Return the value if number (no normalization) otherwise raise error.
-#### fn type.object
-
-```jsonnet
-type.object(o, message)
-```
-
-PARAMETERS:
-
-* **o** (`any`)
-* **message** (`string`)
-
-Enforce object type, raise error if not object
-#### fn type.string
-
-```jsonnet
-type.string(str, message)
-```
-
-PARAMETERS:
-
-* **str** (`any`)
-* **message** (`string`)
-
-Enforce string type, raise error if not string
+Return value if object type match with provided types, otherwise raise error.
 ### obj value
 
-Extra values enforcement
+Values enforcement
 
+#### fn value.array
+
+```jsonnet
+value.array(array, message)
+```
+
+PARAMETERS:
+
+* **array** (`any`)
+* **message** (`string`)
+
+Enforce array, raise error if not array
+#### fn value.arrayOfStrings
+
+```jsonnet
+value.arrayOfStrings(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Enforce array of string only, raise error for any other type
+#### fn value.bool
+
+```jsonnet
+value.bool(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Enforce boolean otherwise raise error.
 #### fn value.literal
 
 ```jsonnet
@@ -161,3 +105,99 @@ PARAMETERS:
 * **message** (`string`)
 
 Enforce literal value, raise error if string not in literal
+#### fn value.nil
+
+```jsonnet
+value.nil(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Enforce null value, raise error for any other type
+#### fn value.nilOrArray
+
+```jsonnet
+value.nilOrArray(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Return value if array type or null type, otherwise raise error.
+#### fn value.nilOrNumber
+
+```jsonnet
+value.nilOrNumber(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Return value if number type or null type, otherwise raise error.
+#### fn value.nilOrObject
+
+```jsonnet
+value.nilOrObject(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Return value if object type or null type, otherwise raise error.
+#### fn value.nilOrString
+
+```jsonnet
+value.nilOrString(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Enforce string type or null type, raise error if not string.
+#### fn value.number
+
+```jsonnet
+value.number(num, message)
+```
+
+PARAMETERS:
+
+* **num** (`any`)
+* **message** (`string`)
+
+Enforce type number (no normalization) otherwise raise error.
+#### fn value.object
+
+```jsonnet
+value.object(o, message)
+```
+
+PARAMETERS:
+
+* **o** (`any`)
+* **message** (`string`)
+
+Enforce object type, raise error if not object
+#### fn value.string
+
+```jsonnet
+value.string(str, message)
+```
+
+PARAMETERS:
+
+* **str** (`any`)
+* **message** (`string`)
+
+Enforce string type, raise error if not string

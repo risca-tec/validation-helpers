@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "dependencies": [
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/yugui/jsonnetunit.git",
+          "subdir": ""
+        }
+      },
+      "version": "6927c58cae7624a00f368b977ccc477d4f74071f",
+      "sum": "GqkCWQTl1RpvdyO6BNxpQ8qIpW5D6bqkyxTKZjsaaNY="
+    }
+  ],
+  "legacyImports": false
+}
