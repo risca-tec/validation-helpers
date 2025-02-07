@@ -164,5 +164,19 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         error '%s -> Got type %s' % [message, std.type(o)]
       else
         error 'Only null or array types are allowed, got %s' % std.type(o),
+
+    '#nilOrBool':: d.fn('Return value if boolean type or null type, otherwise raise error.', [
+      d.arg('o', d.T.any),
+      d.arg('message', d.T.string, default=null),
+    ]),
+    nilOrBool(o, message=null): if o == null then
+      o
+    else if std.isBoolean(o) then
+      o
+    else
+      if std.isString(message) then
+        error '%s -> Got type %s' % [message, std.type(o)]
+      else
+        error 'Only null or bool types are allowed, got %s' % std.type(o),
   },
 }
